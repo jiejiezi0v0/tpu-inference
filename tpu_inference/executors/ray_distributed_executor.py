@@ -32,7 +32,7 @@ from vllm.v1.core.sched.output import GrammarOutput, SchedulerOutput
 from vllm.v1.executor.ray_executor import \
     RayDistributedExecutor as RayDistributedExecutorV1
 from vllm.v1.executor.ray_executor import RayWorkerMetaData
-from vllm.v1.executor.ray_utils import WORKER_SPECIFIC_ENV_VARS
+from vllm.v1.executor.ray_executor import RayDistributedExecutor
 from vllm.v1.executor.ray_utils import RayWorkerWrapper as RayWorkerWrapperV1
 from vllm.v1.executor.ray_utils import _wait_until_pg_ready
 from vllm.v1.outputs import ModelRunnerOutput
@@ -45,7 +45,7 @@ from tpu_inference.models.jax.jax_intermediate_tensor import \
 from tpu_inference.runner.tpu_runner import AsyncTPUModelRunnerOutput
 
 logger = init_logger(__name__)
-
+WORKER_SPECIFIC_ENV_VARS = RayDistributedExecutor.WORKER_SPECIFIC_ENV_VARS
 
 class AsyncResultFuture(Future):
 
